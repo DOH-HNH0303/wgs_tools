@@ -9,7 +9,6 @@ workflow build_bacterial_consensus {
     File      read1
     File      read2
     File      reference_seq
-    String      virus_name="Mumps"
   }
 
   call consensus.bwa_pe_de_novo{
