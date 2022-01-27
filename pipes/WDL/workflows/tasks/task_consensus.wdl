@@ -1,4 +1,4 @@
-idversion 1.0
+version 1.0
 
 task bwa_pe_ref_based {
   input {
