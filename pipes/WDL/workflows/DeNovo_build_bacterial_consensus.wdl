@@ -2,7 +2,7 @@ version 1.0
 
 import "tasks/task_consensus.wdl" as consensus
 
-workflow build_bacterial_consensus {
+workflow DeNovo_build_bacterial_consensus {
 
   input {
     String    id
