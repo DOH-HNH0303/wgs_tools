@@ -55,7 +55,7 @@ workflow DeNovo_build_bacterial_consensus {
     Int  de_novo_consensus_number_ATCG=consensus_qc.consensus_number_ATCG
     Int  de_novo_consensus_number_Degenerate=consensus_qc.consensus_number_Degenerate
     Int  de_novo_consensus_number_Total=consensus_qc.consensus_number_Total
-    Int  de_novo_consensus_percent_reference_coverage=consensus_qc.percent_reference_coverage
+    Int  de_novo_consensus_percent_reference_coverage=consensus_qc.consensus_percent_reference_coverage
 
 
 
