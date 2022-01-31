@@ -41,7 +41,7 @@ workflow DeNovo_build_bacterial_consensus {
 
 
   output {
-    File    bwa_pe_de_novo_software=bwa_pe_de_novo.image_software.txt
+    File    bwa_pe_de_novo_software=bwa_pe_de_novo.image_software
     File    de_novo_bam=sam_to_bam.bamfile
     File    de_novo_sorted_bam=sam_to_bam.sorted_bam
     File    de_novo_indexed_bam=sam_to_bam.indexed_bam
