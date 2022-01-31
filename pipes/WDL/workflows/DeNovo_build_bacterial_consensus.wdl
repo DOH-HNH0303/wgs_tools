@@ -34,7 +34,6 @@ workflow DeNovo_build_bacterial_consensus {
 
   call consensus.consensus_qc {
     input:
-      id=id,
       reference_seq=reference_seq,
       assembly_fasta=bcftools_consensus.consensus_seq
   }
