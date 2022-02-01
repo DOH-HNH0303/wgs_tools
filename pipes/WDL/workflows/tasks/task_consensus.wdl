@@ -167,6 +167,8 @@ task bcftools_consensus {
     # call variants
     bcftools mpileup -Ou -f ${reference_seq} ${sorted_bam} | bcftools call -mv -Oz -o ${base}_variants.vcf.gz
 
+    bcftools index ${base}_variants.vcf.gz
+
     # normalize indels
     bcftools norm -f ${reference_seq} ${base}_variants.vcf.gz -Ob -o ${base}_norm_indels.norm.bcf
 
