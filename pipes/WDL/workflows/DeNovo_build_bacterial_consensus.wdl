@@ -6,16 +6,14 @@ workflow DeNovo_build_bacterial_consensus {
 
   input {
     String    id
-    File      read1
-    File      read2
+    File      assembly_fasta
     File      reference_seq
   }
 
   call consensus.bwa_pe_de_novo{
     input:
       id=id,
-      read1_trim=read1,
-      read2_trim=read1,
+      assembly_fasta=assembly_fasta,
       reference_seq=reference_seq
   }
 
