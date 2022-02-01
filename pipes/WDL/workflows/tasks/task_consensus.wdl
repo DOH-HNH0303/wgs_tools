@@ -177,15 +177,15 @@ task bcftools_consensus {
     cat ${reference_seq} | bcftools consensus ${base}_variants.vcf.gz > ${base}_consensus.fa
 
     cat DATE>consensus_software.txt
-    echo -e "docker image:\t${docker_image}">>consensus_software.txt
-    echo -e "docker image platform:">>consensus_software.txt
-    uname -a>>consensus_software.txt
-    echo -e "main tool used:">>consensus_software.txt
-    echo -e "\tbcftools\t$bcftools_v\t\ta set of utilities that manipulate variant calls in the Variant Call Format (VCF) and its binary counterpart BCF">>consensus_software.txt
-    echo -e "licenses available at:">>consensus_software.txt
+    echo -e "docker image:\t${docker_image}">>bcftools_consensus_software.txt
+    echo -e "docker image platform:">>bcftools_consensus_software.txt
+    uname -a>>bcftools_consensus_software.txt
+    echo -e "main tool used:">>bcftools_consensus_software.txt
+    echo -e "\tbcftools\t$bcftools_v\t\ta set of utilities that manipulate variant calls in the Variant Call Format (VCF) and its binary counterpart BCF">>bcftools_consensus_software.txt
+    echo -e "licenses available at:">>bcftools_consensus_software.txt
     echo -e "\thttps://github.com/samtools/bcftools/blob/develop/LICENSE">>consensus_software.txt
-    printf '%100s\n' | tr ' ' ->>consensus_software.txt
-    dpkg -l>>consensus_software.txt
+    printf '%100s\n' | tr ' ' ->>bcftools_consensus_software.txt
+    dpkg -l>>bcftools_consensus_software.txt
 
   }
 
