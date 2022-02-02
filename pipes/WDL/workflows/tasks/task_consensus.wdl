@@ -275,8 +275,9 @@ task consensus_qc {
 
   }
 
-  command <<<
+  command( <<<)
     # capture date and version
+    ls
     date | tee DATE
 
     num_N=$( grep -v ">" ~{assembly_fasta} | grep -o 'N' | wc -l )
@@ -291,7 +292,7 @@ task consensus_qc {
     ref_genome_len=$(grep -v ">" "${reference_seq}" | wc | awk '{print $3-$1}')
     echo $ref_genome_len
     grep -v ">" "${reference_seq}" | wc | awk '{print $3-$1}'
-    grep -v ">" ${reference_seq} | wc | awk '{print $3-$1}' 
+    grep -v ">" ${reference_seq} | wc | awk '{print $3-$1}'
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
 
     num_degenerate=$( grep -v ">" ~{assembly_fasta} | grep -o -E "B|D|E|F|H|I|J|K|L|M|O|P|Q|R|S|U|V|W|X|Y|Z" | wc -l )
@@ -308,7 +309,7 @@ task consensus_qc {
     uname -a>>consensus_qc_software.txt
     printf '%100s\n' | tr ' ' ->>consensus_qc_software.txt
     dpkg -l>>consensus_qc_software.txt
-  >>>
+  }
 
   output {
     Int       consensus_number_N = read_string("NUM_N")
