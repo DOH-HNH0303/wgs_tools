@@ -275,7 +275,7 @@ task consensus_qc {
 
   }
 
-  command( <<<)
+  command{
     # capture date and version
     ls
     date | tee DATE
