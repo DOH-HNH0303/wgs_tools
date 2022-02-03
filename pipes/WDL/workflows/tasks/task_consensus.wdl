@@ -291,12 +291,16 @@ task consensus_qc {
     # calculate percent coverage (Wu Han-1 genome length: 29903bp)
     echo "test1"
     grep '^[[:blank:]]*[^[:blank:]>;]' ~{reference_seq} | wc -l
+
+    echo "test2"
     reference_genome_len=$('^[[:blank:]]*[^[:blank:]>;]' ~{reference_seq} | wc -l)
     head ~{reference_seq}
     #reference_genome_len=$( grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l )
     echo $reference_seq_len | tee REF_TOTAL
     echo $ref_genome_len
-    echo "test2"
+    echo "test3"
+    grep -v ">" ~{assembly_fasta} | grep -o -E '[A-Z]' | wc -l
+    echo "test4"
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
 
     num_degenerate=$( grep -v ">" ~{assembly_fasta} | grep -o -E "B|D|E|F|H|I|J|K|L|M|O|P|Q|R|S|U|V|W|X|Y|Z" | wc -l )
