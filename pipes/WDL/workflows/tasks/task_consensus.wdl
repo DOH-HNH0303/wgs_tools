@@ -289,9 +289,11 @@ task consensus_qc {
     echo $num_ACTG | tee NUM_ACTG
 
     # calculate percent coverage (Wu Han-1 genome length: 29903bp)
+    echo "test1"
     reference_genome_len=$( grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l )
     echo $reference_seq_len | tee REF_TOTAL
     echo $ref_genome_len
+    echo "test2"
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
 
     num_degenerate=$( grep -v ">" ~{assembly_fasta} | grep -o -E "B|D|E|F|H|I|J|K|L|M|O|P|Q|R|S|U|V|W|X|Y|Z" | wc -l )
@@ -312,6 +314,7 @@ task consensus_qc {
 
   output {
     Int       consensus_number_N = read_string("NUM_N")
+    Int       consensus_ref_total = read_string("REF_TOTAL")
     Int       consensus_number_ATCG = read_string("NUM_ACTG")
     Int       consensus_number_Degenerate = read_string("NUM_DEGENERATE")
     Int       consensus_number_Total = read_string("NUM_TOTAL")
