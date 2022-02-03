@@ -296,10 +296,11 @@ task consensus_qc {
     reference_genome_len=$('^[[:blank:]]*[^[:blank:]>;]' ~{reference_seq} | wc -l)
     head ~{reference_seq}
     #reference_genome_len=$( grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l )
-    echo $reference_seq_len | tee REF_TOTAL
+
     echo $ref_genome_len
     echo "test3"
-    grep -v ">" ~{assembly_fasta} | grep -o -E '[A-Z]' | wc -l
+    grep -v ">" ~{assembly_fasta} | grep -o -E '[A-Z]' | wc -l |tee REF_TOTAL
+    ref_genome_len=$(cat REF_TOTAL)
     echo "test4"
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
 
