@@ -290,6 +290,7 @@ task consensus_qc {
 
     # calculate percent coverage (Wu Han-1 genome length: 29903bp)
     echo "test1"
+    head ~{reference_seq}
     reference_genome_len=$( grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l )
     echo $reference_seq_len | tee REF_TOTAL
     echo $ref_genome_len
