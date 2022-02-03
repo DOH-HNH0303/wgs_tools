@@ -299,9 +299,15 @@ task consensus_qc {
 
     echo $ref_genome_len
     echo "test3"
-    grep -v ">" ~{assembly_fasta} | grep -o -E '[A-Z]' | wc -l |tee REF_TOTAL
+    grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l | tee REF_TOTAL
+    cat REF_TOTAL
+
     ref_genome_len=$(cat REF_TOTAL)
     echo "test4"
+    grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l
+    echo "test5"
+    ref_genome_len=$(grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l)
+    echo $ref_genome_len
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
 
     num_degenerate=$( grep -v ">" ~{assembly_fasta} | grep -o -E "B|D|E|F|H|I|J|K|L|M|O|P|Q|R|S|U|V|W|X|Y|Z" | wc -l )
