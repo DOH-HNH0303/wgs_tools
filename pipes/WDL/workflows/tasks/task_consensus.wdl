@@ -289,23 +289,7 @@ task consensus_qc {
     echo $num_ACTG | tee NUM_ACTG
 
     # calculate percent coverage (Wu Han-1 genome length: 29903bp)
-    echo "test1"
-    grep '^[[:blank:]]*[^[:blank:]>;]' ~{reference_seq} | wc -l
 
-    echo "test2"
-    reference_genome_len=$('^[[:blank:]]*[^[:blank:]>;]' ~{reference_seq} | wc -l)
-    head ~{reference_seq}
-    #reference_genome_len=$( grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l )
-
-    echo $ref_genome_len
-    echo "test3"
-    grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l | tee REF_TOTAL
-    cat REF_TOTAL
-
-    ref_genome_len=$(cat REF_TOTAL)
-    echo "test4"
-    grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l
-    echo "test5"
     ref_genome_len=$(grep -v ">" ~{reference_seq} | grep -o -E '[A-Z]' | wc -l)
     echo $ref_genome_len
     python3 -c "print ( round( ($num_ACTG / $ref_genome_len ) * 100, 2 ) )" | tee PERCENT_REF_COVERAGE
