@@ -1,6 +1,7 @@
 version 1.0
 
 import "tasks/task_consensus.wdl" as consensus
+import "tasks/task_snp.wdl" as snp
 
 workflow DeNovo_build_bacterial_consensus {
 
