@@ -312,7 +312,6 @@ task consensus_qc {
 
   output {
     Int       consensus_number_N = read_string("NUM_N")
-    Int       consensus_ref_total = read_string("REF_TOTAL")
     Int       consensus_number_ATCG = read_string("NUM_ACTG")
     Int       consensus_number_Degenerate = read_string("NUM_DEGENERATE")
     Int       consensus_number_Total = read_string("NUM_TOTAL")
