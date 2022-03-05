@@ -265,7 +265,7 @@ task stats_n_coverage {
   }
 }
 
-task consensus_qc {
+task assembly_qc {
 
   input {
     File        assembly_fasta
@@ -302,21 +302,21 @@ task consensus_qc {
     if [ -z "$num_total" ] ; then num_total="0" ; fi
     echo $num_total | tee NUM_TOTAL
 
-    cat DATE>consensus_qc_software.txt
-    echo -e "docker image:\t${docker_image}">>consensus_qc_software.txt
-    echo -e "docker image platform:">>consensus_qc_software.txt
-    uname -a>>consensus_qc_software.txt
-    printf '%100s\n' | tr ' ' ->>consensus_qc_software.txt
-    dpkg -l>>consensus_qc_software.txt
+    cat DATE>assembly_qc_software.txt
+    echo -e "docker image:\t${docker_image}">>assembly_qc_software.txt
+    echo -e "docker image platform:">>assembly_qc_software.txt
+    uname -a>>assembly_qc_software.txt
+    printf '%100s\n' | tr ' ' ->>assembly_qc_software.txt
+    dpkg -l>>assembly_qc_software.txt
   }
 
   output {
-    Int       consensus_number_N = read_string("NUM_N")
-    Int       consensus_number_ATCG = read_string("NUM_ACTG")
-    Int       consensus_number_Degenerate = read_string("NUM_DEGENERATE")
-    Int       consensus_number_Total = read_string("NUM_TOTAL")
-    Float     consensus_percent_reference_coverage = read_string("PERCENT_REF_COVERAGE")
-    File	image_software="consensus_qc_software.txt"
+    Int       assembly_number_N = read_string("NUM_N")
+    Int       assembly_number_ATCG = read_string("NUM_ACTG")
+    Int       assembly_number_Degenerate = read_string("NUM_DEGENERATE")
+    Int       assembly_number_Total = read_string("NUM_TOTAL")
+    Float     assembly_percent_reference_coverage = read_string("PERCENT_REF_COVERAGE")
+    File	image_software="assembly_qc_software.txt"
   }
 
   runtime {

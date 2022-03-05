@@ -11,6 +11,11 @@ workflow DeNovo_build_bacterial_consensus {
     File      reference_seq
   }
 
+  call consensus.assembly_qc as denovo_qc{
+    input:
+      reference_seq=reference_seq,
+      assembly_fasta=assembly_fasta
+  }
   call consensus.bwa_pe_de_novo{
     input:
       id=id,
@@ -31,7 +36,7 @@ workflow DeNovo_build_bacterial_consensus {
       sorted_bam=sam_to_bam.sorted_bam
   }
 
-  call consensus.consensus_qc {
+  call consensus.assembly_qc as concensus_qc{
     input:
       reference_seq=reference_seq,
       assembly_fasta=bcftools_consensus.consensus_seq
@@ -49,11 +54,18 @@ workflow DeNovo_build_bacterial_consensus {
     File    de_novo_bcftools_consensus_software=bcftools_consensus.image_software
     File    de_novo_consensus_qc_software=consensus_qc.image_software
 
-    Int  de_novo_consensus_number_N=consensus_qc.consensus_number_N
-    Int  de_novo_consensus_number_ATCG=consensus_qc.consensus_number_ATCG
-    Int  de_novo_consensus_number_Degenerate=consensus_qc.consensus_number_Degenerate
-    Int  de_novo_consensus_number_Total=consensus_qc.consensus_number_Total
-    Float  de_novo_consensus_percent_reference_coverage=consensus_qc.consensus_percent_reference_coverage
+    Int  de_novo_consensus_number_N=consensus_qc.assembly_number_N
+    Int  de_novo_consensus_number_ATCG=consensus_qc.assembly_number_ATCG
+    Int  de_novo_consensus_number_Degenerate=consensus_qc.assembly_number_Degenerate
+    Int  de_novo_consensus_number_Total=consensus_qc.assembly_number_Total
+    Float  de_novo_consensus_percent_reference_coverage=consensus_qc.assembly_percent_reference_coverage
+
+    Int  de_novo_assembly_number_N=denovo_qc.assembly_number_N
+    Int  de_novo_assembly_number_ATCG=denovo_qc.assembly_number_ATCG
+    Int  de_novo_assembly_number_Degenerate=denovo_qc.assembly_number_Degenerate
+    Int  de_novo_assembly_number_Total=denovo_qc.assembly_number_Total
+    Float  de_novo_assembly_percent_reference_coverage=denovo_qc.assembly_percent_reference_coverage
+
 
 
 
