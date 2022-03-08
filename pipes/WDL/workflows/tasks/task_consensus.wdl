@@ -315,7 +315,7 @@ task assembly_qc {
     Int       assembly_number_ATCG = read_string("NUM_ACTG")
     Int       assembly_number_Degenerate = read_string("NUM_DEGENERATE")
     Int       assembly_number_Total = read_string("NUM_TOTAL")
-    Float     assembly_percent_reference_coverage = read_string("PERCENT_REF_COVERAGE")
+    Float     #assembly_percent_reference_coverage = read_string("PERCENT_REF_COVERAGE")
     File	image_software="assembly_qc_software.txt"
   }
 
