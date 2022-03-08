@@ -36,7 +36,7 @@ workflow DeNovo_build_bacterial_consensus {
       sorted_bam=sam_to_bam.sorted_bam
   }
 
-  call consensus.assembly_qc as concensus_qc{
+  call consensus.assembly_qc as consensus_qc{
     input:
       reference_seq=reference_seq,
       assembly_fasta=bcftools_consensus.consensus_seq
