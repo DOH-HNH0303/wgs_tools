@@ -2,6 +2,6 @@ version: 1.2
 workflows:
  - name: build_bacterial_consensus
    subclass: WDL
-   primaryDescriptorPath: /pipes/WDL/workflows/DeNovo_build_bacterial_consensus.wdl
+   primaryDescriptorPath: /workflows/DeNovo_build_bacterial_consensus.wdl
    testParameterFiles:
     - empty.json
