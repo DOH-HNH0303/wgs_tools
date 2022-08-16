@@ -58,7 +58,7 @@ workflow DeNovo_build_bacterial_consensus {
     Int  de_novo_consensus_number_ATCG=consensus_qc.assembly_number_ATCG
     Int  de_novo_consensus_number_Degenerate=consensus_qc.assembly_number_Degenerate
     Int  de_novo_consensus_number_Total=consensus_qc.assembly_number_Total
-    Float  de_novo_consensus_percent_reference_coverage=consensus_qc.assembly_percent_reference_coverage
+    #Float  de_novo_consensus_percent_reference_coverage=consensus_qc.assembly_percent_reference_coverage
 
     Int  de_novo_assembly_number_N=denovo_qc.assembly_number_N
     Int  de_novo_assembly_number_ATCG=denovo_qc.assembly_number_ATCG
