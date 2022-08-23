@@ -28,7 +28,6 @@ task cfsan_snp_pipe {
     echo -e "\thttps://github.com/lh3/bwa/blob/master/COPYING">>bwa_pe_ref_based_software.txt
     printf '%100s\n' | tr ' ' ->>bwa_pe_ref_based_software.txt
     dpkg -l>>bwa_pe_ref_based_software.txt
-
   }
 
   output {
