@@ -65,7 +65,7 @@ workflow build_bacterial_consensus {
     }
 
   output {
-    File    bwa_pe_de_novo_software=bwa_pe_de_novo.image_software
+    File?    bwa_pe_de_novo_software=bwa_pe_de_novo.image_software
     File?    de_novo_bam=de_novo_s2b.bamfile
     File?    de_novo_sorted_bam=de_novo_s2b.sorted_bam
     File?    de_novo_indexed_bam=de_novo_s2b.indexed_bam
