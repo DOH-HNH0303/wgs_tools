@@ -35,7 +35,7 @@ workflow build_bacterial_consensus {
       call consensus.assembly_qc as de_novo_consensus_qc{
         input:
           reference_seq=reference_seq,
-          assembly_fasta=de_novo_bcftools_consensus.consensus_seq
+          assembly_fasta=de_novo_bcf_consensus.consensus_seq
       }
     }
     if (de_novo.read_screen==false) {
@@ -72,7 +72,7 @@ workflow build_bacterial_consensus {
     File?    de_novo_sam_to_bam_software=de_novo_s2b.image_software
     File?    de_novo_consensus_seq=de_novo_bcf_consensus.consensus_seq
     File?    de_novo_consensus_variants=de_novo_bcf_consensus.consensus_variants
-    File?    de_novo_bcftools_consensus_software=de_novo_bcf_consensus.image_software
+    File?    de_novo_bcf_consensus_software=de_novo_bcf_consensus.image_software
     File?    de_novo_consensus_qc_software=de_novo_consensus_qc.image_software
 
     Int?  de_novo_consensus_number_N=de_novo_consensus_qc.assembly_number_N
