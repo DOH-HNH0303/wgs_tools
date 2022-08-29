@@ -50,7 +50,7 @@ task bwa_pe_ref_based {
 task bwa_pe_de_novo {
   input {
     String  id
-    File    assembly_fasta
+    File?    assembly_fasta
     File    reference_seq
     Int?      cpus = 4
     String      memory = "16 GB"
