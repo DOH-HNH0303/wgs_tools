@@ -3,8 +3,8 @@ version 1.0
 task bwa_pe_ref_based {
   input {
     String  id
-    File    read1_trim
-    File    read2_trim
+    File?    read1_trim
+    File?    read2_trim
     File    reference_seq
     Int?      cpus = 4
     String      memory = "16 GB"

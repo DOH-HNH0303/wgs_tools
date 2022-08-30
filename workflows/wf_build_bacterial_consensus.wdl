@@ -9,8 +9,8 @@ workflow build_bacterial_consensus {
     String    id
     File?      assembly_fasta
     File      reference_seq
-    File    read1_trim
-    File    read2_trim
+    File?    read1_trim
+    File?    read2_trim
     Boolean    de_novo=false
   }
 
